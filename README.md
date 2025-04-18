@@ -1,12 +1,14 @@
 ### Important Notes on I2C Addressing for Color Sensors
 
+This project focuses on integrating the BH1745NUC color sensor using the I2C protocol. 
+
 Some sensor vendors offer 8-bit addresses that include the read/write bit. To identify this, they usually provide separate addresses for writing and reading. In such cases, only the top seven bits of the address should be used. This is why we logically shifted the provided address in the datasheet to the right by 1.
 
 Another way to determine if a vendor is using 8-bit addresses instead of 7-bit addresses is by verifying the address range. All 7-bit addresses should fall between the range of `0x08` to `0x77` (decimal 8 to 119). The first three bits of the address are fixed, and the remaining four bits can be programmed to any value. If your target address is beyond this range, it is likely that the sensor/shield vendor has indicated an 8-bit address.
 
 ### Overlay File Example for Color Sensors
 
-Below is an example of how to create an overlay file for a color sensor based on its address:
+Below is an example of how to create an overlay file for the BH1745NUC color sensor based on its address:
 
 ```dts
 &i2c0 {
@@ -42,7 +44,7 @@ if (!device_is_ready(color_sensor_dev.bus)) {
 
 ### Example Output
 
-Below is an example of RGB values read from the color sensor:
+Below is an example of RGB values read from the BH1745NUC color sensor:
 
 ```plaintext
 ___________________________________
@@ -51,4 +53,4 @@ Green Value: 213
 Blue Value: 19
 ```
 
-By following these guidelines, you can ensure proper communication and functionality of the color sensor in your project using I2C.
+By following these guidelines, you can ensure proper communication and functionality of the BH1745NUC color sensor in your project using I2C.
