@@ -1,0 +1,8 @@
+&i2c0{
+    bh1745nuc:bh1745nuc@38 {
+        compatible = "i2c-device";
+        reg = <0x38>;
+		irq-gpios = <&gpio0 31 GPIO_ACTIVE_LOW>;
+        label = "BH1745NUC";
+    };
+};
